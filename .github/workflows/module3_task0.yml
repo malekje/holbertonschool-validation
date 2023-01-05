@@ -7,5 +7,5 @@ steps:
     uses: actions/checkout@v2
   - name: Validate Makefile
     run: |
-      cd /home/malekje/holbertonschool-validation
+      cd .github/workflows/module3_task0.yml
       make help
