@@ -1,0 +1,11 @@
+on:
+  push:
+  schedule:
+    - cron: '0 0 * * *'
+steps:
+  - name: Clone repository
+    uses: actions/checkout@v2
+  - name: Validate Makefile
+    run: |
+      cd /home/malekje/holbertonschool-validation
+      make help
