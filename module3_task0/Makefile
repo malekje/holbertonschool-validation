@@ -1,15 +1,16 @@
-## Makefile for Go-Hugo website
+# Define variables
+Publish=hugo
 
-build:## Build the website
-	@hugo
+build: ## Builds a new website
+	$(Publish)
 
-clean: ## Clean up the build directory
-	rm -rf dist/*
+clean: ## Remove all files from folder dist
+	rm -r dist/*
 
-post: ## Create a new blog post
-	hugo new posts/$(POST_NAME).md
+post: ## Create new post and using the sed command to modify the contents of a file.
+	$(Publish) new posts/$(POST_NAME).md
 	sed -i 's/title: .*/title: "$(POST_TITLE)"/' content/posts/$(POST_NAME).md
+# Overwrite the content of a text file without generating a new one (option -i)
 
-help: ## usage: make help
-	@echo "Usage:"
-	cat Makefile | grep '##' | tr -d '##'
+help: ## Display the list of targets and their usage.
+	cat Makefile | grep '##' | tr -d '##' | head -n -1
